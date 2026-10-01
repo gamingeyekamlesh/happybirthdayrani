@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Babudi - Magical Celebration</title>
+  <meta name="description" content="Happy birthday Babudi from Babudi 🩷 | A magical golden starry celebration" />
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Great Vibes (Romantic), Cinzel (Luxury Serif), Plus Jakarta Sans (Clean Modern) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Canvas Confetti for Professional Fireworks -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    :root {
+      --gold-primary: #f6d365;
+      --gold-secondary: #fda085;
+      --gold-glow: rgba(246, 211, 101, 0.4);
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #040407;
+      color: #f3f4f6;
+      overflow-x: hidden;
+      user-select: none;
+    }
+
+    .font-romantic {
+      font-family: 'Great Vibes', cursive;
+    }
+
+    .font-cinzel {
+      font-family: 'Cinzel', serif;
+    }
+
+    /* Ambient Gold Shimmer & Glows */
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #FFF6D6 0%, #F5D061 50%, #E6A13B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .gold-glow {
+      box-shadow: 0 0 35px -5px rgba(245, 208, 97, 0.35);
+    }
+
+    .gold-glow-intense {
+      box-shadow: 0 0 50px 10px rgba(245, 208, 97, 0.45);
+    }
+
+    /* Floating Hanging Balloons Animation */
+    @keyframes floatSway {
+      0%, 100% { transform: translateY(0px) rotate(-2deg); }
+      50% { transform: translateY(-14px) rotate(3deg); }
+    }
+
+    .sway-balloon {
+      animation: floatSway 4.5s ease-in-out infinite;
+    }
+
+    /* Star Twinkle */
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.7);
+      animation: twinkle var(--duration, 3s) infinite ease-in-out var(--delay, 0s);
+    }
+
+    /* Realistic 3D Balloon Styles */
+    .realistic-balloon {
+      border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s;
+    }
+
+    .realistic-balloon:hover {
+      transform: scale(1.08) translateY(-6px);
+    }
+
+    .balloon-gold {
+      background: radial-gradient(circle at 35% 30%, #fffbe6 0%, #fbd561 35%, #b97f19 80%, #744d08 100%);
+      box-shadow: inset -5px -5px 15px rgba(0,0,0,0.5), 0 10px 25px rgba(245, 208, 97, 0.4);
+    }
+
+    .balloon-black {
+      background: radial-gradient(circle at 35% 30%, #52525b 0%, #27272a 40%, #09090b 80%, #000000 100%);
+      box-shadow: inset -5px -5px 15px rgba(255,255,255,0.1), 0 10px 25px rgba(0,0,0,0.8), 0 0 15px rgba(245, 208, 97, 0.15);
+      border: 1px solid rgba(245, 208, 97, 0.25);
+    }
+
+    /* Candle Flame Animation */
+    @keyframes flicker {
+      0%, 100% { transform: scale(1) rotate(-1deg); opacity: 0.95; }
+      25% { transform: scale(1.06, 1.15) rotate(2deg); opacity: 1; }
+      50% { transform: scale(0.95, 0.9) rotate(-2deg); opacity: 0.9; }
+      75% { transform: scale(1.04, 1.05) rotate(1deg); opacity: 1; }
+    }
+
+    .flame {
+      animation: flicker 0.18s infinite alternate;
+      transform-origin: center bottom;
+      filter: drop-shadow(0 0 10px #fbbf24) drop-shadow(0 0 20px #f97316);
+    }
+
+    /* Gift Box 3D Shake */
+    @keyframes gentleWiggle {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      20% { transform: rotate(-3deg) scale(1.02); }
+      40% { transform: rotate(3deg) scale(1.02); }
+      60% { transform: rotate(-2deg) scale(1.02); }
+      80% { transform: rotate(2deg) scale(1.02); }
+    }
+
+    .gift-wiggle:hover {
+      animation: gentleWiggle 0.8s ease-in-out infinite;
+    }
+
+    /* Custom Scrollbar for Letter */
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.03);
+      border-radius: 999px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: rgba(245, 208, 97, 0.4);
+      border-radius: 999px;
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.45s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen relative bg-[#040407] text-white flex flex-col justify-between selection:bg-amber-400 selection:text-black">
+
+  <!-- Optional Custom Background Audio (src/music/birthday_song.mp3 or Web Audio Synth) -->
+  <audio id="custom-audio" src="src/music/birthday_song.mp3" preload="none" loop></audio>
+
+  <!-- Ambient Golden Moon & Stars Layer -->
+  <div id="stars-container" class="fixed inset-0 pointer-events-none z-0 overflow-hidden"></div>
+
+  <!-- Romantic Glowing Crescent Moon with Golden Mist -->
+  <div class="fixed top-5 right-6 md:right-24 w-32 h-32 md:w-44 md:h-44 pointer-events-none z-0 opacity-85 transition-all duration-1000">
+    <div class="relative w-full h-full flex items-center justify-center">
+      <div class="absolute inset-0 rounded-full bg-amber-400/15 blur-3xl animate-pulse" style="animation-duration: 6s;"></div>
+      <svg class="w-full h-full drop-shadow-[0_0_25px_rgba(246,211,101,0.65)]" viewBox="0 0 100 100" fill="none">
+        <defs>
+          <linearGradient id="moonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fff8db" />
+            <stop offset="60%" stop-color="#f5d061" />
+            <stop offset="100%" stop-color="#c98a2c" />
+          </linearGradient>
+        </defs>
+        <path d="M50 5 A45 45 0 1 0 95 50 A35 35 0 1 1 50 5 Z" fill="url(#moonGrad)" />
+      </svg>
+      <div class="absolute top-4 left-6 w-2 h-2 bg-white rounded-full animate-ping opacity-75"></div>
+      <div class="absolute bottom-8 right-5 w-1.5 h-1.5 bg-amber-200 rounded-full animate-pulse"></div>
+    </div>
+  </div>
+
+  <!-- Swaying 3D Hanging Golden & Black Balloons in Top Background -->
+  <div class="fixed top-0 left-0 right-0 h-44 pointer-events-none z-10 flex justify-around px-4 opacity-75 overflow-hidden">
+    <div class="sway-balloon flex flex-col items-center" style="animation-delay: 0s; animation-duration: 5.2s;">
+      <div class="w-13 h-17 md:w-16 md:h-20 balloon-gold realistic-balloon shadow-lg"></div>
+      <div class="w-[1.5px] h-24 bg-gradient-to-b from-amber-400/60 to-transparent"></div>
+    </div>
+    <div class="sway-balloon flex flex-col items-center -mt-3" style="animation-delay: 1.2s; animation-duration: 6s;">
+      <div class="w-15 h-19 md:w-18 md:h-23 balloon-black realistic-balloon shadow-xl"></div>
+      <div class="w-[1.5px] h-32 bg-gradient-to-b from-amber-500/40 to-transparent"></div>
+    </div>
+    <div class="sway-balloon hidden sm:flex flex-col items-center mt-2" style="animation-delay: 2.5s; animation-duration: 4.8s;">
+      <div class="w-12 h-16 md:w-14 md:h-18 balloon-gold realistic-balloon shadow-md"></div>
+      <div class="w-[1.5px] h-20 bg-gradient-to-b from-amber-400/50 to-transparent"></div>
+    </div>
+    <div class="sway-balloon flex flex-col items-center -mt-2" style="animation-delay: 0.8s; animation-duration: 5.5s;">
+      <div class="w-14 h-18 md:w-16 md:h-20 balloon-black realistic-balloon shadow-xl"></div>
+      <div class="w-[1.5px] h-28 bg-gradient-to-b from-amber-500/40 to-transparent"></div>
+    </div>
+    <div class="sway-balloon flex flex-col items-center mt-1" style="animation-delay: 1.8s; animation-duration: 5.2s;">
+      <div class="w-15 h-19 md:w-17 md:h-21 balloon-gold realistic-balloon shadow-lg"></div>
+      <div class="w-[1.5px] h-28 bg-gradient-to-b from-amber-400/60 to-transparent"></div>
+    </div>
+  </div>
+
+  <!-- Top Global Header / Controls -->
+  <header class="relative z-30 w-full max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-tr from-amber-500/30 to-amber-200/10 border border-amber-400/40 flex items-center justify-center text-amber-300 shadow-[0_0_15px_rgba(245,208,97,0.3)]">
+        <i data-lucide="sparkles" class="w-4 h-4 text-amber-300 animate-spin" style="animation-duration: 9s;"></i>
+      </div>
+      <div class="text-left">
+        <span class="text-[10px] sm:text-xs uppercase tracking-widest text-amber-200/70 font-cinzel block">For My Special Boy</span>
+        <h2 class="text-xs sm:text-sm font-semibold tracking-wide text-gray-200">Babudi ❤️'s Birthday 🎂</h2>
+      </div>
+    </div>
+
+    <!-- Actions Area -->
+    <div class="flex items-center gap-2">
+      <!-- Upload / Custom Photo Manager Button -->
+      <button onclick="openPhotoPickerModal()" class="px-3 py-1.5 rounded-full bg-neutral-900/80 hover:bg-neutral-800 text-xs text-amber-300/90 border border-amber-400/30 flex items-center gap-1.5 transition-all shadow-md cursor-pointer">
+        <i data-lucide="image" class="w-3.5 h-3.5 text-amber-400"></i>
+        <span class="hidden sm:inline">My Photos 📸</span>
+      </button>
+
+      <!-- Music Toggle Button -->
+      <button id="music-btn" onclick="toggleMelodyMusic()" class="px-3.5 py-1.5 rounded-full bg-neutral-900/80 hover:bg-neutral-800 text-xs text-amber-300/90 border border-amber-400/30 flex items-center gap-1.5 transition-all shadow-md cursor-pointer">
+        <i id="music-icon" data-lucide="volume-2" class="w-3.5 h-3.5 text-amber-400"></i>
+        <span id="music-text" class="hidden sm:inline">Play Melody</span>
+      </button>
+
+      <!-- Step Counter -->
+      <div class="text-xs text-neutral-400 px-3 py-1.5 rounded-full bg-neutral-900/60 border border-neutral-800 font-mono">
+        <span id="page-counter" class="text-amber-400 font-bold">1</span> / 10
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================== -->
+  <!-- MAIN DYNAMIC CONTENT CONTAINER (10 SCREENS)    -->
+  <!-- ============================================== -->
+  <main class="relative z-20 flex-1 flex items-center justify-center px-4 py-6 w-full max-w-4xl mx-auto">
+
+    <!-- STEP 1: INITIAL WELCOME SCREEN (photo1.jpeg) -->
+    <section id="step-1" class="step-card w-full flex flex-col items-center text-center transition-all duration-700 animate-fade-in">
+      <div class="relative group mb-8">
+        <div class="absolute -inset-1.5 bg-gradient-to-r from-amber-400 via-amber-200 to-amber-500 rounded-3xl blur-md opacity-50 group-hover:opacity-80 transition duration-700"></div>
+        <div class="relative w-64 h-72 sm:w-80 sm:h-96 rounded-2xl overflow-hidden border-2 border-amber-300/40 shadow-2xl bg-neutral-950">
+          <img id="img-step-1" src="src/img/photo1.jpeg" alt="Romantic Couple Portrait" class="w-full h-full object-cover transform hover:scale-105 transition-all duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
+          <div class="absolute bottom-3 left-0 right-0 text-center">
+            <span class="text-xs text-amber-200/90 font-cinzel tracking-wider px-3.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-amber-400/20">Forever & Always ❤️</span>
+          </div>
+        </div>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-romantic gold-gradient-text tracking-wide mb-3 drop-shadow-lg">
+        Mazi Babudi ❤️
+      </h1>
+      <p class="text-base sm:text-lg md:text-xl text-neutral-300 max-w-lg mb-8 font-light leading-relaxed">
+        Today is your special day! but wait... <br>
+        <span class="text-amber-300 font-normal">this place is missing a little magic.</span>
+      </p>
+
+      <button onclick="goToStep(2); playCheerConfetti();" class="group relative px-8 py-3.5 rounded-full font-medium text-base text-neutral-950 bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 hover:from-amber-200 hover:to-amber-400 shadow-[0_0_30px_rgba(245,208,97,0.5)] transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer">
+        <span>Let's decorate</span>
+        <i data-lucide="sparkles" class="w-4 h-4 transition-transform group-hover:rotate-45"></i>
+      </button>
+    </section>
+
+    <!-- STEP 2: CELEBRATION AESTHETIC EFFECT (photo8.jpeg) -->
+    <section id="step-2" class="step-card hidden w-full flex flex-col items-center text-center transition-all duration-700">
+      <div class="relative w-full max-w-lg mb-8 p-6 sm:p-8 rounded-3xl bg-neutral-900/60 backdrop-blur-xl border border-amber-400/30 gold-glow">
+        <div class="flex justify-center items-center gap-4 sm:gap-6 mb-5">
+          <div class="w-11 h-15 sm:w-13 sm:h-17 balloon-gold realistic-balloon sway-balloon"></div>
+          <div class="w-36 h-36 sm:w-44 sm:h-44 rounded-full p-1 bg-gradient-to-tr from-amber-400 via-yellow-200 to-amber-600 shadow-[0_0_25px_rgba(245,208,97,0.5)]">
+            <img id="img-step-2" src="src/img/photo8.jpeg" alt="Romantic Smile Couple" class="w-full h-full object-cover rounded-full">
+          </div>
+          <div class="w-11 h-15 sm:w-13 sm:h-17 balloon-black realistic-balloon sway-balloon" style="animation-delay: 1.5s;"></div>
+        </div>
+
+        <div class="flex items-center justify-center gap-2 text-amber-300/80 text-xs sm:text-sm mb-2 font-cinzel">
+          <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-300 text-amber-300"></i>
+          <span>Magic Enchantment Activated</span>
+          <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-300 text-amber-300"></i>
+        </div>
+
+        <h2 class="text-4xl sm:text-5xl font-romantic gold-gradient-text mb-3">
+          Mazi Babudi ❤️
+        </h2>
+        <p class="text-base sm:text-lg text-neutral-200 font-light leading-relaxed">
+          "Perfect ! a special little place made just for you."
+        </p>
+      </div>
+
+      <button onclick="goToStep(3)" class="group px-9 py-3.5 rounded-full font-medium text-base text-neutral-950 bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 hover:from-amber-200 hover:to-amber-400 shadow-[0_0_30px_rgba(245,208,97,0.5)] transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer">
+        <span>Let's begin</span>
+        <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-1"></i>
+      </button>
+    </section>
+
+    <!-- STEP 3: SPECIAL NUMBER CASINO ROTATING SLOT (25) -->
+    <section id="step-3" class="step-card hidden w-full flex flex-col items-center text-center transition-all duration-700">
+      <div class="mb-3 px-4 py-1 rounded-full bg-amber-400/10 border border-amber-400/20 text-xs font-cinzel text-amber-300 tracking-wider">
+        Golden Milestone
+      </div>
+
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-cinzel font-bold text-white mb-2">
+        A special number
+      </h2>
+      <p class="text-neutral-300 text-sm sm:text-base md:text-lg mb-6 max-w-md">
+        Let's see how many wonderful years you've collected
+      </p>
+
+      <div class="relative p-6 sm:p-8 rounded-3xl bg-neutral-900/80 backdrop-blur-xl border-2 border-amber-400/40 shadow-[0_0_40px_rgba(245,208,97,0.25)] flex flex-col items-center max-w-sm w-full mb-6">
+        <div class="flex items-center justify-center gap-4 mb-4">
+          <!-- First Reel -->
+          <div class="w-24 sm:w-28 h-28 sm:h-32 rounded-2xl bg-neutral-950 border-2 border-amber-300/50 shadow-inner flex items-center justify-center overflow-hidden relative">
+            <div id="slot-reel-1" class="absolute top-0 text-5xl sm:text-6xl font-bold font-cinzel gold-gradient-text transition-all flex flex-col items-center select-none">
+              <div class="h-28 sm:h-32 flex items-center justify-center">?</div>
+              <div class="h-28 sm:h-32 flex items-center justify-center">7</div>
+              <div class="h-28 sm:h-32 flex items-center justify-center">3</div>
+              <div class="h-28 sm:h-32 flex items-center justify-center">9</div>
+              <div class="h-28 sm:h-32 flex items-center justify-center">1</div>
+              <div class="h-28 sm:h-32 flex items-center justify-center">8</div>
+              <div class="h-28 sm:h-32 flex items-center justify-center">4</div>
+              <div class="h-28 sm:h-32 flex items-center justify-center font-bold text-amber-300">2</div>
+            </div>
+            <div class="absolute inset-0 pointer-events-none bg-gradient-to-b from-black/80 via-transparent to-black/80"></div>
+          </div>
+
+          <!-- Second Reel -->
+          <div class="w-24 sm:w-28 h-28 sm:h-32 rounded-2xl bg-neutral-950 border-2 border-amber-300/50 shadow-inner flex items-center justify-center overflow-hidden relative">
+            <div id="slot-reel-2" class="absolute top-0 text-5xl sm:text-6xl font-bold font-cinzel gold-gradient-text transition-all flex flex-col items-center select-none">
+              <div class="h-28 sm:h-32 flex items-center justify-center">?</div>
+              <div class="h-28 sm:h-32 flex items-center justify-center">1</div>
+              <div class="h-28 sm:h-32 flex items-center justify-center">8</div>
+              <div class="h-28 sm:h-32 flex items-center justify-center">4</div>
+              <div class="h-28 sm:h-32 flex items-center justify-center">0</div>
+              <div class="h-28 sm:h-32 flex items-center justify-center">6</div>
+              <div class="h-28 sm:h-32 flex items-center justify-center">8</div>
+              <div class="h-28 sm:h-32 flex items-center justify-center font-bold text-amber-300">3</div>
+            </div>
+            <div class="absolute inset-0 pointer-events-none bg-gradient-to-b from-black/80 via-transparent to-black/80"></div>
+          </div>
+        </div>
+
+        <div id="slot-status-msg" class="text-xs sm:text-sm font-medium text-amber-300/90 h-6 flex items-center justify-center">
+          Tap reveal to unlock the golden number
+        </div>
+      </div>
+
+      <div id="slot-action-area">
+        <button id="slot-reveal-btn" onclick="triggerSlotSpin()" class="px-9 py-3.5 rounded-full font-medium text-neutral-950 bg-gradient-to-r from-amber-300 to-amber-500 hover:from-amber-200 hover:to-amber-400 shadow-[0_0_25px_rgba(245,208,97,0.4)] transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer">
+          <i data-lucide="disc" class="w-4 h-4"></i>
+          <span>Reveal</span>
+        </button>
+      </div>
+
+      <div id="slot-result-box" class="hidden mt-4 text-center animate-fade-in max-w-md">
+        <p class="font-romantic text-2xl sm:text-3xl gold-gradient-text mb-4 leading-relaxed">
+          23 years of smiles, memories and beautiful moments
+        </p>
+        <button onclick="goToStep(4)" class="px-9 py-3 rounded-full font-medium text-neutral-950 bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 hover:from-amber-200 hover:to-amber-400 shadow-[0_0_30px_rgba(245,208,97,0.5)] transition-all duration-300 transform hover:scale-105 active:scale-95 cursor-pointer">
+          Continue
+        </button>
+      </div>
+    </section>
+
+    <!-- STEP 4: 5 THINGS I LOVE ABOUT YOU -->
+    <section id="step-4" class="step-card hidden w-full flex flex-col items-center text-center transition-all duration-700">
+      <div class="mb-2 px-3.5 py-1 rounded-full bg-pink-500/10 border border-pink-400/20 text-xs font-cinzel text-pink-300 tracking-wider">
+        Straight From My Heart 💌
+      </div>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-cinzel font-bold text-white mb-2">
+        5 things i love about you
+      </h2>
+      <p class="text-xs sm:text-sm md:text-base text-neutral-400 mb-6">
+        Card <span id="love-card-index" class="text-amber-400 font-bold">1</span> of 5 • Tap Next to swipe through
+      </p>
+
+      <div class="relative w-full max-w-md h-72 sm:h-80 mb-6">
+        <div id="love-cards-wrapper" class="relative w-full h-full">
+          <!-- Card 1 -->
+          <div class="love-card absolute inset-0 rounded-3xl p-6 sm:p-8 bg-neutral-900/90 backdrop-blur-xl border border-amber-400/30 shadow-[0_0_35px_rgba(245,208,97,0.2)] flex flex-col justify-between text-left transition-all duration-500">
+            <div class="flex items-center justify-between">
+              <span class="w-10 h-10 rounded-full bg-amber-400/20 border border-amber-400/40 flex items-center justify-center font-bold text-amber-300 font-cinzel">01</span>
+              <i data-lucide="heart" class="w-6 h-6 text-pink-400 fill-pink-400/50"></i>
+            </div>
+            <div>
+              <h3 class="text-lg sm:text-xl font-bold text-amber-200 mb-2 font-cinzel">Your Infectious Smile</h3>
+              <p class="text-neutral-300 text-xs sm:text-sm md:text-base leading-relaxed">
+                The way your face lights up whenever you laugh or see something you love. It instantly turns my worst days into pure sunshine and warmth.
+              </p>
+            </div>
+            <div class="text-xs text-neutral-400 italic">"You are my favourite smile to watch."</div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="love-card hidden absolute inset-0 rounded-3xl p-6 sm:p-8 bg-neutral-900/90 backdrop-blur-xl border border-amber-400/30 shadow-[0_0_35px_rgba(245,208,97,0.2)] flex flex-col justify-between text-left transition-all duration-500">
+            <div class="flex items-center justify-between">
+              <span class="w-10 h-10 rounded-full bg-amber-400/20 border border-amber-400/40 flex items-center justify-center font-bold text-amber-300 font-cinzel">02</span>
+              <i data-lucide="shield" class="w-6 h-6 text-amber-400"></i>
+            </div>
+            <div>
+              <h3 class="text-lg sm:text-xl font-bold text-amber-200 mb-2 font-cinzel">Your Caring & Protective Soul</h3>
+              <p class="text-neutral-300 text-xs sm:text-sm md:text-base leading-relaxed">
+                You always notice the smallest details about whether I've eaten, how I feel, or if I'm tired. Being wrapped in your arms is my safest refuge in the world.
+              </p>
+            </div>
+            <div class="text-xs text-neutral-400 italic">"With you, I feel completely home."</div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="love-card hidden absolute inset-0 rounded-3xl p-6 sm:p-8 bg-neutral-900/90 backdrop-blur-xl border border-amber-400/30 shadow-[0_0_35px_rgba(245,208,97,0.2)] flex flex-col justify-between text-left transition-all duration-500">
+            <div class="flex items-center justify-between">
+              <span class="w-10 h-10 rounded-full bg-amber-400/20 border border-amber-400/40 flex items-center justify-center font-bold text-amber-300 font-cinzel">03</span>
+              <i data-lucide="zap" class="w-6 h-6 text-amber-300"></i>
+            </div>
+            <div>
+              <h3 class="text-lg sm:text-xl font-bold text-amber-200 mb-2 font-cinzel">Your Ambition & Hard Work</h3>
+              <p class="text-neutral-300 text-xs sm:text-sm md:text-base leading-relaxed">
+                I deeply respect the passion, determination, and focus you bring to everything you set your mind to. Watching you grow and succeed makes me so proud!
+              </p>
+            </div>
+            <div class="text-xs text-neutral-400 italic">"My biggest inspiration every day."</div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="love-card hidden absolute inset-0 rounded-3xl p-6 sm:p-8 bg-neutral-900/90 backdrop-blur-xl border border-amber-400/30 shadow-[0_0_35px_rgba(245,208,97,0.2)] flex flex-col justify-between text-left transition-all duration-500">
+            <div class="flex items-center justify-between">
+              <span class="w-10 h-10 rounded-full bg-amber-400/20 border border-amber-400/40 flex items-center justify-center font-bold text-amber-300 font-cinzel">04</span>
+              <i data-lucide="sparkles" class="w-6 h-6 text-pink-300"></i>
+            </div>
+            <div>
+              <h3 class="text-lg sm:text-xl font-bold text-amber-200 mb-2 font-cinzel">Your Adorable Goofiness</h3>
+              <p class="text-neutral-300 text-xs sm:text-sm md:text-base leading-relaxed">
+                Those silly jokes, funny expressions, and playful teasing only I get to see. You are effortlessly beautiful yet the biggest Babudi ❤️ at heart.
+              </p>
+            </div>
+            <div class="text-xs text-neutral-400 italic">"Nobody can make me chuckle like you do."</div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="love-card hidden absolute inset-0 rounded-3xl p-6 sm:p-8 bg-neutral-900/90 backdrop-blur-xl border border-amber-400/30 shadow-[0_0_35px_rgba(245,208,97,0.2)] flex flex-col justify-between text-left transition-all duration-500">
+            <div class="flex items-center justify-between">
+              <span class="w-10 h-10 rounded-full bg-amber-400/20 border border-amber-400/40 flex items-center justify-center font-bold text-amber-300 font-cinzel">05</span>
+              <i data-lucide="infinity" class="w-6 h-6 text-amber-400"></i>
+            </div>
+            <div>
+              <h3 class="text-lg sm:text-xl font-bold text-amber-200 mb-2 font-cinzel">How Truly Loved You Make Me Feel</h3>
+              <p class="text-neutral-300 text-xs sm:text-sm md:text-base leading-relaxed">
+                Your patience, loyalty, and deep kindness are a blessing. Choosing you as my dost and partner is the easiest and happiest decision of my life.
+              </p>
+            </div>
+            <div class="text-xs text-neutral-400 italic">"I love you endlessly, today and always."</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <button id="next-love-card-btn" onclick="nextLoveCard()" class="px-8 py-3 rounded-full font-medium text-xs sm:text-sm text-neutral-950 bg-gradient-to-r from-amber-300 to-amber-500 hover:from-amber-200 hover:to-amber-400 shadow-[0_0_25px_rgba(245,208,97,0.4)] transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer">
+          <span id="next-love-text">Next Thing</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- STEP 5: POP THE BALLOONS -->
+    <section id="step-5" class="step-card hidden w-full flex flex-col items-center text-center transition-all duration-700">
+      <div class="mb-2 px-3.5 py-1 rounded-full bg-amber-400/10 border border-amber-400/20 text-xs font-cinzel text-amber-300 tracking-wider">
+        Interactive Surprise
+      </div>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-cinzel font-bold text-white mb-2">
+        Pop the balloons
+      </h2>
+      <p class="text-neutral-300 text-xs sm:text-sm md:text-base mb-6 max-w-md">
+        Tap each luxury balloon to pop it and reveal your 5 best qualities!
+      </p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 sm:gap-4 w-full max-w-3xl mb-8 min-h-[200px] items-center justify-center">
+        <div class="balloon-container flex flex-col items-center" id="b-wrap-1">
+          <div onclick="popBalloon(1, 'beautiful & Charming', '🔥', event)" class="balloon-gold realistic-balloon w-20 h-28 sm:w-24 sm:h-32 flex items-center justify-center relative cursor-pointer">
+            <span class="text-[10px] sm:text-xs font-semibold text-neutral-900 tracking-wide">TAP ME</span>
+            <div class="w-[1px] h-10 bg-amber-400/60 absolute -bottom-10 left-1/2"></div>
+          </div>
+          <div id="quality-1" class="hidden p-3 rounded-2xl bg-neutral-900/90 border border-amber-400/40 text-center animate-fade-in w-full shadow-lg">
+            <div class="text-2xl mb-1">🔥</div>
+            <div class="text-[11px] sm:text-xs uppercase text-amber-300 font-bold tracking-wide">beautiful & Charming</div>
+          </div>
+        </div>
+
+        <div class="balloon-container flex flex-col items-center" id="b-wrap-2">
+          <div onclick="popBalloon(2, 'Deeply Caring & Sweet', '💖', event)" class="balloon-black realistic-balloon w-20 h-28 sm:w-24 sm:h-32 flex items-center justify-center relative cursor-pointer">
+            <span class="text-[10px] sm:text-xs font-semibold text-amber-300 tracking-wide">TAP ME</span>
+            <div class="w-[1px] h-10 bg-amber-400/60 absolute -bottom-10 left-1/2"></div>
+          </div>
+          <div id="quality-2" class="hidden p-3 rounded-2xl bg-neutral-900/90 border border-amber-400/40 text-center animate-fade-in w-full shadow-lg">
+            <div class="text-2xl mb-1">💖</div>
+            <div class="text-[11px] sm:text-xs uppercase text-amber-300 font-bold tracking-wide">Deeply Caring & Sweet</div>
+          </div>
+        </div>
+
+        <div class="balloon-container flex flex-col items-center" id="b-wrap-3">
+          <div onclick="popBalloon(3, 'Fiercely Loyal & True', '🛡️', event)" class="balloon-gold realistic-balloon w-20 h-28 sm:w-24 sm:h-32 flex items-center justify-center relative cursor-pointer">
+            <span class="text-[10px] sm:text-xs font-semibold text-neutral-900 tracking-wide">TAP ME</span>
+            <div class="w-[1px] h-10 bg-amber-400/60 absolute -bottom-10 left-1/2"></div>
+          </div>
+          <div id="quality-3" class="hidden p-3 rounded-2xl bg-neutral-900/90 border border-amber-400/40 text-center animate-fade-in w-full shadow-lg">
+            <div class="text-2xl mb-1">🛡️</div>
+            <div class="text-[11px] sm:text-xs uppercase text-amber-300 font-bold tracking-wide">Fiercely Loyal & True</div>
+          </div>
+        </div>
+
+        <div class="balloon-container flex flex-col items-center" id="b-wrap-4">
+          <div onclick="popBalloon(4, 'Hardworking & Ambitious', '⭐', event)" class="balloon-black realistic-balloon w-20 h-28 sm:w-24 sm:h-32 flex items-center justify-center relative cursor-pointer">
+            <span class="text-[10px] sm:text-xs font-semibold text-amber-300 tracking-wide">TAP ME</span>
+            <div class="w-[1px] h-10 bg-amber-400/60 absolute -bottom-10 left-1/2"></div>
+          </div>
+          <div id="quality-4" class="hidden p-3 rounded-2xl bg-neutral-900/90 border border-amber-400/40 text-center animate-fade-in w-full shadow-lg">
+            <div class="text-2xl mb-1">⭐</div>
+            <div class="text-[11px] sm:text-xs uppercase text-amber-300 font-bold tracking-wide">Hardworking & Ambitious</div>
+          </div>
+        </div>
+
+        <div class="balloon-container flex flex-col items-center" id="b-wrap-5">
+          <div onclick="popBalloon(5, 'My Safe Comfort Zone', '✨', event)" class="balloon-gold realistic-balloon w-20 h-28 sm:w-24 sm:h-32 flex items-center justify-center relative cursor-pointer">
+            <span class="text-[10px] sm:text-xs font-semibold text-neutral-900 tracking-wide">TAP ME</span>
+            <div class="w-[1px] h-10 bg-amber-400/60 absolute -bottom-10 left-1/2"></div>
+          </div>
+          <div id="quality-5" class="hidden p-3 rounded-2xl bg-neutral-900/90 border border-amber-400/40 text-center animate-fade-in w-full shadow-lg">
+            <div class="text-2xl mb-1">✨</div>
+            <div class="text-[11px] sm:text-xs uppercase text-amber-300 font-bold tracking-wide">My Safe Comfort Zone</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="balloon-status-banner" class="text-xs sm:text-sm text-neutral-400 mb-6">
+        <span id="balloons-popped-count" class="text-amber-400 font-bold">0</span> of 5 balloons popped
+      </div>
+
+      <button id="balloons-next-btn" disabled onclick="goToStep(6)" class="opacity-40 cursor-not-allowed px-9 py-3 rounded-full font-medium text-xs sm:text-sm text-neutral-950 bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 transition-all duration-300 flex items-center gap-2">
+        <span>Proceed to Memories</span>
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </button>
+    </section>
+
+    <!-- STEP 6: CUTE MEMORIES PHOTO CAROUSEL (photo2, photo3, photo4, photo7, photo11) -->
+    <section id="step-6" class="step-card hidden w-full flex flex-col items-center text-center transition-all duration-700">
+      <div class="mb-2 px-3.5 py-1 rounded-full bg-amber-400/10 border border-amber-400/20 text-xs font-cinzel text-amber-300 tracking-wider">
+        Golden Moments Together 📸
+      </div>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-cinzel font-bold text-white mb-2">
+        Cute memories
+      </h2>
+      <p class="text-neutral-400 text-xs sm:text-sm md:text-base mb-6">
+        <span id="memory-counter-tag" class="text-amber-400 font-semibold">Memory 1</span> of 5 • Swipe to browse our fairytale
+      </p>
+
+      <div class="relative w-full max-w-sm sm:max-w-md mb-6">
+        <div id="memory-card-container" class="relative w-full aspect-[4/5] rounded-3xl overflow-hidden border-2 border-amber-400/30 bg-neutral-900 shadow-2xl p-4 flex flex-col justify-between">
+          <div class="relative w-full h-[74%] rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-950">
+            <img id="memory-img" src="src/img/photo2.jpeg" alt="Memory Moment" class="w-full h-full object-cover transition-opacity duration-500">
+            <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-xs text-amber-300 font-cinzel">
+              <span id="memory-badge">Memory 1</span>
+            </div>
+          </div>
+
+          <div class="p-2 sm:p-3 text-left">
+            <h3 id="memory-title" class="text-base sm:text-lg font-bold text-amber-200 font-cinzel mb-1">Divine Temple Blessings</h3>
+            <p id="memory-desc" class="text-xs sm:text-sm text-neutral-300 line-clamp-2 leading-relaxed">
+              At the Kopineshwar temple on my birthday as well as pahat. 
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <button onclick="prevMemory()" class="p-3 rounded-full bg-neutral-900 border border-neutral-700 hover:border-amber-400/50 text-neutral-300 hover:text-amber-300 transition-all cursor-pointer">
+          <i data-lucide="chevron-left" class="w-5 h-5"></i>
+        </button>
+        <button id="memory-next-btn" onclick="nextMemory()" class="px-7 sm:px-8 py-3 rounded-full font-medium text-xs sm:text-sm text-neutral-950 bg-gradient-to-r from-amber-300 to-amber-500 hover:from-amber-200 hover:to-amber-400 shadow-[0_0_25px_rgba(245,208,97,0.4)] transition-all flex items-center gap-2 cursor-pointer">
+          <span id="memory-btn-text">Next Memory</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- STEP 7: MAKE A WISH (CAKE WITH 5 CANDLES) -->
+    <section id="step-7" class="step-card hidden w-full flex flex-col items-center text-center transition-all duration-700">
+      <div class="mb-2 px-3.5 py-1 rounded-full bg-amber-400/10 border border-amber-400/20 text-xs font-cinzel text-amber-300 tracking-wider">
+        Birthday Ritual 🎂
+      </div>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-cinzel font-bold text-white mb-2">
+        Make a wish
+      </h2>
+      <p class="text-neutral-300 text-xs sm:text-sm md:text-base mb-6 max-w-md">
+        Close your eyes, think of your deepest wish, and tap each of the 5 candles to blow them out!
+      </p>
+
+      <div class="relative w-full max-w-md p-6 sm:p-8 rounded-3xl bg-neutral-900/60 backdrop-blur-xl border border-amber-400/30 flex flex-col items-center shadow-2xl mb-6">
+        <div class="flex items-end justify-center gap-4 sm:gap-6 mb-2 z-10">
+          <div onclick="blowCandle(1)" class="candle-wrapper flex flex-col items-center cursor-pointer group select-none">
+            <div id="flame-1" class="flame w-3.5 h-6 rounded-full bg-gradient-to-t from-amber-500 via-yellow-300 to-white shadow-[0_0_15px_#fbbf24] mb-0.5 transition-all duration-300"></div>
+            <div class="w-3.5 h-16 rounded-t-sm bg-gradient-to-r from-amber-100 via-amber-200 to-amber-400 border border-amber-400/40 shadow-sm relative">
+              <div class="w-full h-1 bg-amber-600/30 absolute top-3"></div>
+              <div class="w-full h-1 bg-amber-600/30 absolute top-7"></div>
+              <div class="w-full h-1 bg-amber-600/30 absolute top-11"></div>
+            </div>
+          </div>
+
+          <div onclick="blowCandle(2)" class="candle-wrapper flex flex-col items-center cursor-pointer group select-none">
+            <div id="flame-2" class="flame w-3.5 h-6 rounded-full bg-gradient-to-t from-amber-500 via-yellow-300 to-white shadow-[0_0_15px_#fbbf24] mb-0.5 transition-all duration-300"></div>
+            <div class="w-3.5 h-20 rounded-t-sm bg-gradient-to-r from-amber-100 via-amber-200 to-amber-400 border border-amber-400/40 shadow-sm relative">
+              <div class="w-full h-1 bg-amber-600/30 absolute top-4"></div>
+              <div class="w-full h-1 bg-amber-600/30 absolute top-9"></div>
+              <div class="w-full h-1 bg-amber-600/30 absolute top-14"></div>
+            </div>
+          </div>
+
+          <div onclick="blowCandle(3)" class="candle-wrapper flex flex-col items-center cursor-pointer group select-none">
+            <div id="flame-3" class="flame w-4 h-7 rounded-full bg-gradient-to-t from-amber-500 via-yellow-300 to-white shadow-[0_0_20px_#fbbf24] mb-0.5 transition-all duration-300"></div>
+            <div class="w-4 h-24 rounded-t-sm bg-gradient-to-r from-amber-200 via-yellow-100 to-amber-400 border border-amber-300 shadow-md relative">
+              <div class="w-full h-1.5 bg-amber-600/30 absolute top-5"></div>
+              <div class="w-full h-1.5 bg-amber-600/30 absolute top-12"></div>
+              <div class="w-full h-1.5 bg-amber-600/30 absolute top-18"></div>
+            </div>
+          </div>
+
+          <div onclick="blowCandle(4)" class="candle-wrapper flex flex-col items-center cursor-pointer group select-none">
+            <div id="flame-4" class="flame w-3.5 h-6 rounded-full bg-gradient-to-t from-amber-500 via-yellow-300 to-white shadow-[0_0_15px_#fbbf24] mb-0.5 transition-all duration-300"></div>
+            <div class="w-3.5 h-20 rounded-t-sm bg-gradient-to-r from-amber-100 via-amber-200 to-amber-400 border border-amber-400/40 shadow-sm relative">
+              <div class="w-full h-1 bg-amber-600/30 absolute top-4"></div>
+              <div class="w-full h-1 bg-amber-600/30 absolute top-9"></div>
+              <div class="w-full h-1 bg-amber-600/30 absolute top-14"></div>
+            </div>
+          </div>
+
+          <div onclick="blowCandle(5)" class="candle-wrapper flex flex-col items-center cursor-pointer group select-none">
+            <div id="flame-5" class="flame w-3.5 h-6 rounded-full bg-gradient-to-t from-amber-500 via-yellow-300 to-white shadow-[0_0_15px_#fbbf24] mb-0.5 transition-all duration-300"></div>
+            <div class="w-3.5 h-16 rounded-t-sm bg-gradient-to-r from-amber-100 via-amber-200 to-amber-400 border border-amber-400/40 shadow-sm relative">
+              <div class="w-full h-1 bg-amber-600/30 absolute top-3"></div>
+              <div class="w-full h-1 bg-amber-600/30 absolute top-7"></div>
+              <div class="w-full h-1 bg-amber-600/30 absolute top-11"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-64 sm:w-80 flex flex-col items-center -mt-1 select-none">
+          <div class="w-48 h-12 rounded-t-2xl bg-gradient-to-b from-amber-200 to-amber-400 border-x-2 border-t-2 border-amber-300/80 shadow-md flex items-center justify-center text-[10px] sm:text-xs font-cinzel text-neutral-900 font-bold tracking-widest">
+            HAPPY 24TH
+          </div>
+          <div class="w-60 h-16 bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 border-x-2 border-amber-400/40 shadow-lg flex items-center justify-around px-4">
+            <div class="w-2.5 h-2.5 rounded-full bg-amber-400"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-amber-300"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-amber-400"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-amber-300"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-amber-400"></div>
+          </div>
+          <div class="w-72 sm:w-80 h-18 rounded-b-2xl bg-gradient-to-b from-amber-400 via-amber-500 to-amber-700 border-2 border-amber-300 shadow-2xl flex items-center justify-center">
+            <span class="font-romantic text-neutral-950 text-xl sm:text-2xl font-bold tracking-wider">With Endless Love</span>
+          </div>
+          <div class="w-80 sm:w-96 h-4 bg-gradient-to-r from-transparent via-amber-300 to-transparent mt-1 rounded-full shadow-[0_0_20px_rgba(245,208,97,0.5)]"></div>
+        </div>
+      </div>
+
+      <div id="candle-status-text" class="text-xs sm:text-sm text-neutral-400 mb-4">
+        <span id="candles-blown-count" class="text-amber-400 font-bold">0</span> of 5 candles blown out
+      </div>
+    </section>
+
+    <!-- STEP 8: CELEBRATION PARTY SCREEN (photo6.jpeg) -->
+    <section id="step-8" class="step-card hidden w-full flex flex-col items-center text-center transition-all duration-700">
+      <div class="relative w-64 h-72 sm:w-80 sm:h-96 rounded-3xl overflow-hidden border-2 border-amber-300/40 shadow-[0_0_40px_rgba(245,208,97,0.4)] mb-6 bg-neutral-950">
+        <img id="img-step-8" src="src/img/photo6.jpeg" alt="Celebration Couple" class="w-full h-full object-cover transform hover:scale-105 transition-all duration-700">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none"></div>
+        <div class="absolute bottom-4 left-0 right-0 flex justify-center">
+          <span class="px-4 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-amber-400/40 text-amber-300 font-cinzel text-xs font-semibold tracking-wider">
+            All Wishes Granted ✨
+          </span>
+        </div>
+      </div>
+
+      <h2 class="text-4xl sm:text-5xl md:text-6xl font-romantic gold-gradient-text mb-3">
+        yay! Happy birthday Babudi ❤️
+      </h2>
+      <p class="text-base sm:text-lg text-neutral-300 max-w-md mb-8 font-light leading-relaxed">
+        May every single wish you made today turn into the most beautiful reality this year!
+      </p>
+
+      <button onclick="goToStep(9)" class="group px-9 py-3.5 rounded-full font-medium text-xs sm:text-base text-neutral-950 bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 hover:from-amber-200 hover:to-amber-400 shadow-[0_0_30px_rgba(245,208,97,0.5)] transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer">
+        <span>Read kr babu ek chotasa try aahe </span>
+        <i data-lucide="heart" class="w-4 h-4 fill-neutral-950"></i>
+      </button>
+    </section>
+
+    <!-- STEP 9: MY DEAR Babudi ❤️ (photo5.jpeg) -->
+    <section id="step-9" class="step-card hidden w-full flex flex-col items-center text-center transition-all duration-700">
+      <div class="relative w-full max-w-xl p-5 sm:p-8 rounded-3xl bg-neutral-900/90 backdrop-blur-2xl border border-amber-400/30 shadow-[0_0_40px_rgba(245,208,97,0.2)] flex flex-col items-center mb-6">
+        <div class="flex items-center gap-4 mb-4 w-full">
+          <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-amber-400/40 shadow-md shrink-0">
+            <img id="img-step-9" src="src/img/photo5.jpeg" alt="Sweet Hug Couple" class="w-full h-full object-cover">
+          </div>
+          <div class="text-left flex-1">
+            <span class="text-[10px] sm:text-xs uppercase tracking-widest text-amber-300/80 font-cinzel block">From My Heart To Yours</span>
+            <h2 class="text-2xl sm:text-3xl font-romantic gold-gradient-text">my dear Babudi ❤️</h2>
+          </div>
+        </div>
+
+        <div class="w-full max-h-72 overflow-y-auto custom-scroll pr-2 text-left space-y-4 text-neutral-300 text-xs sm:text-sm md:text-base leading-relaxed border-t border-b border-neutral-800/80 py-4 my-2">
+          <p>
+            Happy 23rd Birthday to the most amazing Mickya in the world! As I sit down to write this, I find myself reminiscing about every single memory we've shared. From our sacred temple visits and road trips across green mountain sides in the city of lakes, to our laughs by the seaside. silly late-night talks — every second spent with you is a treasure I hold close to my heart.
+          </p>
+          <p>
+            Dil ke dard ko lafzon mein bayaan karna mushkil hai,  
+Har muskaan ke peeche ek kahani chhupi hai.  
+Zindagi ek shayari hai jo adhuri si lagti hai,  
+Aur har ashq mein ek nayi dastaan likhi hai.
+
+          </p>
+          <p>
+            Janamdin par duaon ka paighaam laaye hain,  
+Har khushi ke saaye tujhe hum laaye hain.  
+
+Teri hansi se roshan ho har ek samaa,  
+Tu hai toh gulon ki tarah mehke zindagii ka jahan.  
+
+Har dard ko tu apni muskaan se mita deti hai,  
+Tu meri duaon ka sabse khoobsurat silsila banti hai.  
+
+Janamdin mubarak ho meri roshni, meri jaan,  
+Tu hai toh meri duniya hai ek behtareen dastaan.
+
+          </p>
+          <p>
+             ❤️🧿Thank you for understanding and managing me. Thank you for being the sweetest, most beautiful, and deeply loving soul that you are. May your 23rd year be as unforgettable and magical as you make my life every single day. Love you Babudi and Happy birthday too ❤️🧿
+          </p>
+        </div>
+
+        <div class="w-full flex justify-between items-center text-xs text-amber-300/60 font-cinzel pt-2">
+          <span class="text-[11px] text-neutral-500">Babudi saathich Letter 📜</span>
+          <span class="font-romantic text-base text-amber-300">Forever Yours 🩷</span>
+        </div>
+      </div>
+
+      <button onclick="goToStep(10)" class="group px-9 py-3.5 rounded-full font-medium text-xs sm:text-base text-neutral-950 bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 hover:from-amber-200 hover:to-amber-400 shadow-[0_0_30px_rgba(245,208,97,0.5)] transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer">
+        <span>one last thing for you</span>
+        <i data-lucide="gift" class="w-4 h-4"></i>
+      </button>
+    </section>
+
+    <!-- STEP 10: GIFT BOX OPENING & FINAL REVEAL (photo10.jpeg) -->
+    <section id="step-10" class="step-card hidden w-full flex flex-col items-center text-center transition-all duration-700">
+      
+      <!-- State 1: Unopened Gift Box -->
+      <div id="gift-unopened" class="flex flex-col items-center animate-fade-in">
+        <div class="mb-3 px-3.5 py-1 rounded-full bg-amber-400/10 border border-amber-400/20 text-xs font-cinzel text-amber-300 tracking-wider">
+          The Grand Finale 🎁
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-cinzel font-bold text-white mb-2">
+          A token of my love
+        </h2>
+        <p class="text-amber-300 text-base sm:text-lg mb-8 font-medium animate-pulse">
+          tap the gift to open
+        </p>
+
+        <div onclick="openGiftBox()" class="relative w-48 h-48 sm:w-56 sm:h-56 cursor-pointer gift-wiggle flex items-center justify-center group active:scale-95 transition-transform">
+          <div class="absolute inset-0 bg-amber-400/25 rounded-3xl blur-2xl group-hover:bg-amber-400/40 transition-all duration-300"></div>
+          
+          <svg class="w-full h-full drop-shadow-[0_15px_30px_rgba(0,0,0,0.8)]" viewBox="0 0 200 200" fill="none">
+            <rect x="35" y="70" width="130" height="100" rx="16" fill="url(#giftBoxGrad)" stroke="#f5d061" stroke-width="2"/>
+            <rect x="25" y="52" width="150" height="30" rx="8" fill="#18181b" stroke="#f5d061" stroke-width="2.5"/>
+            <rect x="88" y="52" width="24" height="118" fill="url(#ribbonGrad)"/>
+            <rect x="25" y="62" width="150" height="10" fill="url(#ribbonGrad)"/>
+            <path d="M100 52 C75 10, 45 35, 95 50 Z" fill="url(#ribbonGrad)" stroke="#fff" stroke-width="0.5"/>
+            <path d="M100 52 C125 10, 155 35, 105 50 Z" fill="url(#ribbonGrad)" stroke="#fff" stroke-width="0.5"/>
+            <circle cx="100" cy="50" r="9" fill="#f5d061"/>
+
+            <defs>
+              <linearGradient id="giftBoxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#27272a"/>
+                <stop offset="100%" stop-color="#09090b"/>
+              </linearGradient>
+              <linearGradient id="ribbonGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#f6d365"/>
+                <stop offset="50%" stop-color="#fff8db"/>
+                <stop offset="100%" stop-color="#fda085"/>
+              </linearGradient>
+            </defs>
+          </svg>
+
+          <div class="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-amber-400 text-neutral-950 flex items-center justify-center font-bold text-xs shadow-lg animate-bounce">
+            ✨
+          </div>
+        </div>
+
+        <p class="text-xs text-neutral-400 mt-6 italic">Specially crafted for your 23rd birthday</p>
+      </div>
+
+      <!-- State 2: Opened Gift Box & Grand Reveal -->
+      <div id="gift-opened" class="hidden flex flex-col items-center max-w-lg w-full animate-fade-in">
+        <div class="relative w-64 h-72 sm:w-80 sm:h-96 rounded-3xl overflow-hidden border-2 border-amber-300 shadow-[0_0_50px_rgba(245,208,97,0.5)] mb-6 bg-neutral-950 transform hover:scale-105 transition-transform duration-500">
+          <img id="img-step-10" src="src/img/photo10.jpeg" alt="Romantic Night Lights Couple" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none"></div>
+          <div class="absolute bottom-3 left-0 right-0 text-center">
+            <span class="text-xs text-amber-200/90 font-cinzel tracking-wider px-3.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-amber-400/30">My Eternal Love 💍</span>
+          </div>
+        </div>
+
+        <h3 class="text-2xl sm:text-3xl font-cinzel font-bold text-amber-300 mb-2">
+          thankyou for being in my life
+        </h3>
+        
+        <p class="text-sm sm:text-base md:text-lg text-neutral-300 max-w-md mb-2 font-light">
+          I hope my small gift made you smile today.
+        </p>
+
+        <p class="text-2xl sm:text-3xl font-romantic gold-gradient-text mb-8">
+          Happy birthday once again, Babudi ❤️ 🩷
+        </p>
+
+        <!-- CRITICAL REQUIREMENT: "experience it again" button resets to the very beginning -->
+        <button onclick="resetExperience()" class="group px-9 py-3.5 rounded-full font-medium text-xs sm:text-base text-neutral-950 bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 hover:from-amber-200 hover:to-amber-400 shadow-[0_0_35px_rgba(245,208,97,0.6)] transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer">
+          <i data-lucide="rotate-ccw" class="w-4 h-4 transition-transform group-hover:-rotate-90"></i>
+          <span>experience it again</span>
+        </button>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ======================================================= -->
+  <!-- MANDATORY FOOTER ON EACH PAGE: "Happy birthday love from Babudi 🩷" -->
+  <!-- ======================================================= -->
+  <footer class="relative z-30 w-full py-4 px-4 text-center select-none">
+    <div class="flex items-center justify-center gap-1.5 text-xs text-neutral-400/90 font-light tracking-wide">
+      <span class="text-amber-400/70 font-cinzel text-[11px]">✦</span>
+      <span class="hover:text-pink-300 transition-colors drop-shadow-[0_0_8px_rgba(244,114,182,0.4)]">
+        Happy birthday Babudi from Babudi 🩷
+      </span>
+      <span class="text-amber-400/70 font-cinzel text-[11px]">✦</span>
+    </div>
+  </footer>
+
+  <!-- ======================================================= -->
+  <!-- PHOTO UPLOADER MODAL (Select all 10 photos instantly)   -->
+  <!-- ======================================================= -->
+  <div id="photo-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div class="relative w-full max-w-xl bg-neutral-900 border border-amber-400/40 rounded-3xl p-6 overflow-hidden flex flex-col shadow-2xl">
+      <div class="flex items-center justify-between pb-3 border-b border-neutral-800">
+        <div>
+          <span class="text-[10px] uppercase tracking-widest text-amber-400 font-cinzel">Personal Photos</span>
+          <h3 class="text-lg font-bold text-white font-cinzel">Load / Upload Your 10 Photos 📸</h3>
+        </div>
+        <button onclick="closePhotoPickerModal()" class="p-2 text-neutral-400 hover:text-white rounded-full bg-neutral-800 hover:bg-neutral-700 transition">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <div class="my-4 text-left space-y-3">
+        <p class="text-xs text-neutral-300">
+          Bhai, you can select your 10 photos (<code class="text-amber-300">photo1.jpeg</code> to <code class="text-amber-300">photo11.jpeg</code>) directly from your device! The app automatically matches them and stores them in your browser.
+        </p>
+
+        <label class="flex flex-col items-center justify-center border-2 border-dashed border-amber-400/40 hover:border-amber-400 rounded-2xl p-6 bg-neutral-950/60 cursor-pointer transition">
+          <i data-lucide="upload-cloud" class="w-8 h-8 text-amber-400 mb-2"></i>
+          <span class="text-xs font-semibold text-amber-300">Click to Select Photos from Device</span>
+          <span class="text-[10px] text-neutral-400 mt-1">Select all 10 files (photo1.jpeg, photo2.jpeg...)</span>
+          <input type="file" multiple accept="image/*" class="hidden" onchange="handleUserPhotoUpload(event)">
+        </label>
+
+        <div id="upload-status" class="text-xs text-emerald-400 hidden font-medium text-center"></div>
+      </div>
+
+      <div class="flex justify-end pt-3 border-t border-neutral-800">
+        <button onclick="closePhotoPickerModal()" class="px-5 py-2 rounded-full text-xs font-medium text-neutral-300 hover:text-white bg-neutral-800 hover:bg-neutral-700 transition">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================= -->
+  <!-- COMPLETE STANDALONE SCRIPT LOGIC                        -->
+  <!-- ======================================================= -->
+  <script>
+    /* ==============================================================
+     * 📸 CHANGE PHOTOS HERE / फोटो बदलण्यासाठी या लिंक्स बदला
+     * ==============================================================
+     * All 10 photos are configured here:
+     * photo1.jpeg  -> Screen 1 Welcome & Memory 1
+     * photo8.jpeg  -> Screen 2 Enchanted Arch
+     * photo2.jpeg  -> Memory 1 (Temple Blessing)
+     * photo3.jpeg  -> Memory 2 (Mountain Horizon)
+     * photo4.jpeg  -> Memory 3 (Ocean Sunset)
+     * photo7.jpeg  -> Memory 4 (Cozy Dinner Laughter)
+     * photo11.jpeg -> Memory 5 (Lalbaugcha Raja)
+     * photo6.jpeg  -> Screen 8 Celebration Party
+     * photo5.jpeg  -> Screen 9 Love Letter Avatar
+     * photo10.jpeg -> Screen 10 Grand Final Gift Reveal
+     * ============================================================== */
+    const PHOTOS_CONFIG = {
+      welcome: 'src/img/photo1.jpeg',
+      enchanted: 'src/img/photo8.jpeg',
+      mem1: 'src/img/photo2.jpeg',
+      mem2: 'src/img/photo3.jpeg',
+      mem3: 'src/img/photo4.jpeg',
+      mem4: 'src/img/photo7.jpeg',
+      mem5: 'src/img/photo11.jpeg',
+      celebration: 'src/img/photo6.jpeg',
+      letterAvatar: 'src/img/photo5.jpeg',
+      finalReveal: 'src/img/photo10.jpeg'
+    };
+
+    // Load any saved photos from localStorage
+    function loadSavedPhotos() {
+      try {
+        const saved = localStorage.getItem('birthday_custom_photos');
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          Object.assign(PHOTOS_CONFIG, parsed);
+          applyPhotosToDOM();
+        }
+      } catch (e) {}
+    }
+
+    function applyPhotosToDOM() {
+      const setImg = (id, src) => {
+        const el = document.getElementById(id);
+        if (el && src) el.src = src;
+      };
+      setImg('img-step-1', PHOTOS_CONFIG.welcome);
+      setImg('img-step-2', PHOTOS_CONFIG.enchanted);
+      setImg('img-step-8', PHOTOS_CONFIG.celebration);
+      setImg('img-step-9', PHOTOS_CONFIG.letterAvatar);
+      setImg('img-step-10', PHOTOS_CONFIG.finalReveal);
+      memoriesData[0].img = PHOTOS_CONFIG.mem1;
+      memoriesData[1].img = PHOTOS_CONFIG.mem2;
+      memoriesData[2].img = PHOTOS_CONFIG.mem3;
+      memoriesData[3].img = PHOTOS_CONFIG.mem4;
+      memoriesData[4].img = PHOTOS_CONFIG.mem5;
+      renderMemory(currentMemoryIdx);
+    }
+
+    // Modal controls
+    function openPhotoPickerModal() {
+      document.getElementById('photo-modal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+    function closePhotoPickerModal() {
+      document.getElementById('photo-modal').classList.add('hidden');
+    }
+
+    function handleUserPhotoUpload(e) {
+      const files = Array.from(e.target.files);
+      if (!files.length) return;
+
+      const mapping = {};
+      let readCount = 0;
+
+      files.forEach((file) => {
+        const reader = new FileReader();
+        const name = file.name.toLowerCase();
+
+        reader.onload = (event) => {
+          const dataUrl = event.target.result;
+          if (name.includes('photo1.') && !name.includes('photo10') && !name.includes('photo11')) mapping.welcome = dataUrl;
+          if (name.includes('photo8.')) mapping.enchanted = dataUrl;
+          if (name.includes('photo2.')) mapping.mem1 = dataUrl;
+          if (name.includes('photo3.')) mapping.mem2 = dataUrl;
+          if (name.includes('photo4.')) mapping.mem3 = dataUrl;
+          if (name.includes('photo7.')) mapping.mem4 = dataUrl;
+          if (name.includes('photo11.')) mapping.mem5 = dataUrl;
+          if (name.includes('photo6.')) mapping.celebration = dataUrl;
+          if (name.includes('photo5.')) mapping.letterAvatar = dataUrl;
+          if (name.includes('photo10.')) mapping.finalReveal = dataUrl;
+
+          readCount++;
+          if (readCount === files.length) {
+            Object.assign(PHOTOS_CONFIG, mapping);
+            try {
+              localStorage.setItem('birthday_custom_photos', JSON.stringify(PHOTOS_CONFIG));
+            } catch (err) {}
+            applyPhotosToDOM();
+            const status = document.getElementById('upload-status');
+            status.textContent = `✨ ${files.length} Photos loaded and applied successfully!`;
+            status.classList.remove('hidden');
+            setTimeout(() => closePhotoPickerModal(), 1200);
+          }
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // -------------------------------------------------------------
+    // Starry Night & Golden Mist Background
+    // -------------------------------------------------------------
+    const starsContainer = document.getElementById('stars-container');
+    const starCount = 85;
+    for (let i = 0; i < starCount; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      const size = Math.random() * 2.8 + 1;
+      star.style.width = `${size}px`;
+      star.style.height = `${size}px`;
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.setProperty('--duration', `${Math.random() * 3 + 2}s`);
+      star.style.setProperty('--delay', `${Math.random() * 4}s`);
+      if (Math.random() > 0.65) {
+        star.style.background = '#f5d061';
+        star.style.boxShadow = '0 0 10px 2px rgba(245, 208, 97, 0.7)';
+      }
+      starsContainer.appendChild(star);
+    }
+
+    // -------------------------------------------------------------
+    // Web Audio Synthesizer (BGM Melody & Sound FX)
+    // -------------------------------------------------------------
+    let audioCtx = null;
+    let isMelodyPlaying = false;
+    let bgmInterval = null;
+
+    function getAudioContext() {
+      if (!audioCtx) {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (AudioCtx) audioCtx = new AudioCtx();
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    function playSynthTone(freq, duration = 0.5, type = 'sine', gainVal = 0.08) {
+      try {
+        const ctx = getAudioContext();
+        if (!ctx) return;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, ctx.currentTime);
+        gain.gain.setValueAtTime(gainVal, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    function playBalloonPopSound() {
+      try {
+        const ctx = getAudioContext();
+        if (!ctx) return;
+        const now = ctx.currentTime;
+        const bufferSize = ctx.sampleRate * 0.1;
+        const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        const output = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+          output[i] = (Math.random() * 2 - 1) * Math.exp(-i / (ctx.sampleRate * 0.02));
+        }
+        const whiteNoise = ctx.createBufferSource();
+        whiteNoise.buffer = buffer;
+        const filter = ctx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(1400, now);
+        filter.frequency.linearRampToValueAtTime(120, now + 0.1);
+        const noiseGain = ctx.createGain();
+        noiseGain.gain.setValueAtTime(0.35, now);
+        noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+        whiteNoise.connect(filter);
+        filter.connect(noiseGain);
+        noiseGain.connect(ctx.destination);
+        whiteNoise.start(now);
+        playSynthTone(784, 0.3, 'sine', 0.05);
+      } catch (e) {}
+    }
+
+    function playCandleBlowSound() {
+      try {
+        const ctx = getAudioContext();
+        if (!ctx) return;
+        const now = ctx.currentTime;
+        const bufferSize = ctx.sampleRate * 0.22;
+        const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+          data[i] = (Math.random() * 2 - 1) * Math.sin((i / bufferSize) * Math.PI);
+        }
+        const source = ctx.createBufferSource();
+        source.buffer = buffer;
+        const filter = ctx.createBiquadFilter();
+        filter.type = 'bandpass';
+        filter.frequency.setValueAtTime(450, now);
+        const gain = ctx.createGain();
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.linearRampToValueAtTime(0.01, now + 0.22);
+        source.connect(filter);
+        filter.connect(gain);
+        gain.connect(ctx.destination);
+        source.start(now);
+        setTimeout(() => playSynthTone(1046.5, 0.4, 'sine', 0.04), 100);
+      } catch (e) {}
+    }
+
+    function toggleMelodyMusic() {
+      const btnText = document.getElementById('music-text');
+      const customAudio = document.getElementById('custom-audio');
+
+      if (!isMelodyPlaying) {
+        isMelodyPlaying = true;
+        btnText.textContent = "Melody Playing 🎵";
+        if (customAudio && customAudio.src) {
+          customAudio.play().catch(() => startRomanticSynthBGM());
+        } else {
+          startRomanticSynthBGM();
+        }
+      } else {
+        isMelodyPlaying = false;
+        btnText.textContent = "Play Melody";
+        if (customAudio) customAudio.pause();
+        stopRomanticSynthBGM();
+      }
+    }
+
+    function startRomanticSynthBGM() {
+      const chords = [
+        [261.63, 329.63, 392.0, 493.88],
+        [220.0, 261.63, 329.63, 392.0],
+        [174.61, 261.63, 329.63, 349.23],
+        [196.0, 293.66, 392.0, 523.25]
+      ];
+      let cIdx = 0;
+      let nIdx = 0;
+
+      const tick = () => {
+        if (!isMelodyPlaying) return;
+        const currentChord = chords[cIdx];
+        playSynthTone(currentChord[nIdx] * 1.5, 0.7, 'sine', 0.035);
+        nIdx++;
+        if (nIdx >= currentChord.length) {
+          nIdx = 0;
+          cIdx = (cIdx + 1) % chords.length;
+        }
+      };
+      tick();
+      bgmInterval = setInterval(tick, 450);
+    }
+
+    function stopRomanticSynthBGM() {
+      if (bgmInterval) {
+        clearInterval(bgmInterval);
+        bgmInterval = null;
+      }
+    }
+
+    // -------------------------------------------------------------
+    // Page / Step Controller
+    // -------------------------------------------------------------
+    let currentStep = 1;
+    const totalSteps = 10;
+
+    function goToStep(step) {
+      if (step < 1 || step > totalSteps) return;
+
+      for (let i = 1; i <= totalSteps; i++) {
+        const sec = document.getElementById(`step-${i}`);
+        if (sec) sec.classList.add('hidden');
+      }
+
+      const targetSec = document.getElementById(`step-${step}`);
+      if (targetSec) {
+        targetSec.classList.remove('hidden');
+        targetSec.classList.add('animate-fade-in');
+      }
+
+      currentStep = step;
+      document.getElementById('page-counter').textContent = currentStep;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      lucide.createIcons();
+    }
+
+    function playCheerConfetti() {
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 75,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ['#f6d365', '#fda085', '#ffffff', '#e5e7eb', '#d97706']
+        });
+      }
+    }
+
+    function playFullPartyConfetti() {
+      if (typeof confetti === 'function') {
+        const duration = 2.5 * 1000;
+        const animationEnd = Date.now() + duration;
+        const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 999 };
+
+        const interval = setInterval(function() {
+          const timeLeft = animationEnd - Date.now();
+          if (timeLeft <= 0) return clearInterval(interval);
+          const particleCount = 45 * (timeLeft / duration);
+          confetti(Object.assign({}, defaults, { particleCount, origin: { x: Math.random() * 0.4 + 0.1, y: Math.random() - 0.2 }, colors: ['#f6d365', '#ffd700', '#ffffff', '#f43f5e'] }));
+          confetti(Object.assign({}, defaults, { particleCount, origin: { x: Math.random() * 0.4 + 0.5, y: Math.random() - 0.2 }, colors: ['#f6d365', '#10b981', '#6366f1', '#fbbf24'] }));
+        }, 220);
+      }
+    }
+
+    // -------------------------------------------------------------
+    // STEP 3: Slot Machine Casino (Lands on 25)
+    // -------------------------------------------------------------
+    let hasSpunSlot = false;
+
+    function triggerSlotSpin() {
+      if (hasSpunSlot) return;
+      hasSpunSlot = true;
+
+      const reel1 = document.getElementById('slot-reel-1');
+      const reel2 = document.getElementById('slot-reel-2');
+      const statusMsg = document.getElementById('slot-status-msg');
+      const revealBtn = document.getElementById('slot-reveal-btn');
+
+      revealBtn.disabled = true;
+      revealBtn.classList.add('opacity-50', 'cursor-not-allowed');
+      statusMsg.innerHTML = `<span class="animate-pulse text-amber-300">Let's find out... ✨</span>`;
+
+      let ticks = 0;
+      const tInterval = setInterval(() => {
+        playSynthTone(320 + Math.random() * 80, 0.04, 'square', 0.03);
+        ticks++;
+        if (ticks > 28) clearInterval(tInterval);
+      }, 110);
+
+      const isMobile = window.innerWidth < 640;
+      const stepDist = isMobile ? 112 : 128;
+
+      reel1.style.transform = `translateY(-${7 * stepDist}px)`;
+      reel1.style.transition = `transform 3.2s cubic-bezier(0.12, 0.82, 0.32, 1)`;
+
+      setTimeout(() => {
+        reel2.style.transform = `translateY(-${7 * stepDist}px)`;
+        reel2.style.transition = `transform 3.8s cubic-bezier(0.12, 0.82, 0.32, 1)`;
+      }, 200);
+
+      setTimeout(() => {
+        playCheerConfetti();
+        [523.25, 659.25, 783.99, 1046.5].forEach((f, i) => {
+          setTimeout(() => playSynthTone(f, 0.7, 'triangle', 0.09), i * 110);
+        });
+        document.getElementById('slot-action-area').classList.add('hidden');
+        document.getElementById('slot-result-box').classList.remove('hidden');
+        statusMsg.textContent = "Golden 23 reached!";
+      }, 4000);
+    }
+
+    // -------------------------------------------------------------
+    // STEP 4: 5 Things I Love About You Cards
+    // -------------------------------------------------------------
+    let currentLoveCardIndex = 0;
+    const totalLoveCards = 5;
+
+    function nextLoveCard() {
+      const cards = document.querySelectorAll('.love-card');
+      playSynthTone(520 + currentLoveCardIndex * 60, 0.25);
+      
+      if (currentLoveCardIndex < totalLoveCards - 1) {
+        cards[currentLoveCardIndex].classList.add('hidden');
+        currentLoveCardIndex++;
+        cards[currentLoveCardIndex].classList.remove('hidden');
+        cards[currentLoveCardIndex].classList.add('animate-fade-in');
+
+        document.getElementById('love-card-index').textContent = currentLoveCardIndex + 1;
+
+        if (currentLoveCardIndex === totalLoveCards - 1) {
+          document.getElementById('next-love-text').textContent = "Pop Balloons Next";
+        }
+      } else {
+        goToStep(5);
+      }
+    }
+
+    // -------------------------------------------------------------
+    // STEP 5: Pop The Balloons (5 Realistic Balloons)
+    // -------------------------------------------------------------
+    let balloonsPopped = 0;
+    const totalBalloons = 5;
+
+    function popBalloon(index, qualityName, emoji, event) {
+      const balloonElem = document.querySelector(`#b-wrap-${index} .realistic-balloon`);
+      const qualityBox = document.getElementById(`quality-${index}`);
+
+      if (!balloonElem || balloonElem.dataset.popped === "true") return;
+      balloonElem.dataset.popped = "true";
+
+      playBalloonPopSound();
+
+      if (typeof confetti === 'function') {
+        const x = event ? event.clientX / window.innerWidth : 0.5;
+        const y = event ? event.clientY / window.innerHeight : 0.5;
+        confetti({
+          particleCount: 30,
+          spread: 55,
+          origin: { x, y },
+          colors: ['#f6d365', '#ffffff', '#27272a', '#fbbf24']
+        });
+      }
+
+      balloonElem.style.transform = "scale(1.4)";
+      balloonElem.style.opacity = "0";
+
+      setTimeout(() => {
+        balloonElem.classList.add('hidden');
+        qualityBox.classList.remove('hidden');
+      }, 200);
+
+      balloonsPopped++;
+      document.getElementById('balloons-popped-count').textContent = balloonsPopped;
+
+      if (balloonsPopped === totalBalloons) {
+        const nextBtn = document.getElementById('balloons-next-btn');
+        nextBtn.disabled = false;
+        nextBtn.classList.remove('opacity-40', 'cursor-not-allowed');
+        nextBtn.classList.add('gold-glow-intense', 'transform', 'scale-105', 'cursor-pointer');
+        document.getElementById('balloon-status-banner').innerHTML = `<span class="text-amber-300 font-bold">✨ All qualities unlocked! Tap proceed below.</span>`;
+        playCheerConfetti();
+      }
+    }
+
+    // -------------------------------------------------------------
+    // STEP 6: Cute Memories Photo Carousel
+    // -------------------------------------------------------------
+    const memoriesData = [
+      {
+        title: "Pahat at Kopineshwar",
+        desc: "At the holy shrine with golden dome, seeking eternal happiness, blessings, and lifelong togetherness.",
+        badge: "Memory 1",
+        img: PHOTOS_CONFIG.mem1
+      },
+      {
+        title: "Endless enjoy at Tikujiniwadi",
+        desc: "Jaam majja at tikujiniwadi that struggle, fun, laughter and one ewww scene at dancing waves 😅",
+        badge: "Memory 2",
+        img: PHOTOS_CONFIG.mem2
+      },
+      {
+        title: "Juhu chaupati",
+        desc: "Struggle to reach there, hashh..! But the loveful captures from that foreigner and blessings at Iskon",
+        badge: "Memory 3",
+        img: PHOTOS_CONFIG.mem3
+      },
+      {
+        title: "Dragon - same same but different",
+        desc: "I know it's not the same dragon which was at very first, but majja aali.",
+        badge: "Memory 4",
+        img: PHOTOS_CONFIG.mem4
+      },
+      {
+        title: "Ai la asa vatto apan 80's madhe",
+        desc: "I don't know about 80's but tuza asach prem and vishwas asla tr nakkich sobat asa photo asel aapla",
+        badge: "Memory 5",
+        img: PHOTOS_CONFIG.mem5
+      }
+    ];
+
+    let currentMemoryIdx = 0;
+
+    function renderMemory(idx) {
+      const data = memoriesData[idx];
+      const img = document.getElementById('memory-img');
+      const title = document.getElementById('memory-title');
+      const desc = document.getElementById('memory-desc');
+      const badge = document.getElementById('memory-badge');
+      const counterTag = document.getElementById('memory-counter-tag');
+      const btnText = document.getElementById('memory-btn-text');
+
+      img.style.opacity = '0';
+      setTimeout(() => {
+        img.src = data.img;
+        img.style.opacity = '1';
+      }, 200);
+
+      title.textContent = data.title;
+      desc.textContent = data.desc;
+      badge.textContent = data.badge;
+      counterTag.textContent = data.badge;
+
+      btnText.textContent = idx === memoriesData.length - 1 ? "Make a Wish Next" : "Next Memory";
+    }
+
+    function nextMemory() {
+      if (currentMemoryIdx < memoriesData.length - 1) {
+        currentMemoryIdx++;
+        playSynthTone(540 + currentMemoryIdx * 50, 0.25);
+        renderMemory(currentMemoryIdx);
+      } else {
+        goToStep(7);
+      }
+    }
+
+    function prevMemory() {
+      if (currentMemoryIdx > 0) {
+        currentMemoryIdx--;
+        playSynthTone(500, 0.2);
+        renderMemory(currentMemoryIdx);
+      }
+    }
+
+    // -------------------------------------------------------------
+    // STEP 7: Cake Candles Blow Out
+    // -------------------------------------------------------------
+    let candlesBlown = 0;
+    const totalCandles = 5;
+
+    function blowCandle(id) {
+      const flame = document.getElementById(`flame-${id}`);
+      if (!flame || flame.dataset.blown === "true") return;
+
+      flame.dataset.blown = "true";
+      playCandleBlowSound();
+      flame.style.opacity = "0";
+      flame.style.transform = "scale(0) translateY(-10px)";
+
+      candlesBlown++;
+      document.getElementById('candles-blown-count').textContent = candlesBlown;
+
+      if (candlesBlown === totalCandles) {
+        document.getElementById('candle-status-text').innerHTML = `<span class="text-amber-300 font-bold">✨ All 5 candles blown! Wish sealed! ✨</span>`;
+        playFullPartyConfetti();
+        setTimeout(() => {
+          goToStep(8);
+        }, 1800);
+      }
+    }
+
+    // -------------------------------------------------------------
+    // STEP 10: Gift Box Reveal
+    // -------------------------------------------------------------
+    function openGiftBox() {
+      [440, 554.37, 659.25, 830.61, 880, 1108.73, 1318.51].forEach((f, i) => {
+        setTimeout(() => playSynthTone(f, 0.8, 'sine', 0.08), i * 75);
+      });
+      playFullPartyConfetti();
+      document.getElementById('gift-unopened').classList.add('hidden');
+      document.getElementById('gift-opened').classList.remove('hidden');
+      document.getElementById('gift-opened').classList.add('animate-fade-in');
+    }
+
+    // -------------------------------------------------------------
+    // CRITICAL REQUIREMENT: "experience it again vr click kela tr repeat start zala pahijel from very beginning ok"
+    // -------------------------------------------------------------
+    function resetExperience() {
+      playSynthTone(523.25, 0.3);
+
+      hasSpunSlot = false;
+      currentLoveCardIndex = 0;
+      balloonsPopped = 0;
+      currentMemoryIdx = 0;
+      candlesBlown = 0;
+
+      const reel1 = document.getElementById('slot-reel-1');
+      const reel2 = document.getElementById('slot-reel-2');
+      if (reel1) reel1.style.transform = 'translateY(0px)';
+      if (reel2) reel2.style.transform = 'translateY(0px)';
+      document.getElementById('slot-action-area').classList.remove('hidden');
+      document.getElementById('slot-result-box').classList.add('hidden');
+      const slotRevealBtn = document.getElementById('slot-reveal-btn');
+      if (slotRevealBtn) {
+        slotRevealBtn.disabled = false;
+        slotRevealBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      }
+      document.getElementById('slot-status-msg').textContent = "Tap reveal to unlock the golden number";
+
+      const loveCards = document.querySelectorAll('.love-card');
+      loveCards.forEach((c, idx) => {
+        if (idx === 0) c.classList.remove('hidden');
+        else c.classList.add('hidden');
+      });
+      document.getElementById('love-card-index').textContent = '1';
+      document.getElementById('next-love-text').textContent = 'Next Thing';
+
+      for (let i = 1; i <= 5; i++) {
+        const b = document.querySelector(`#b-wrap-${i} .realistic-balloon`);
+        const q = document.getElementById(`quality-${i}`);
+        if (b) {
+          b.dataset.popped = "false";
+          b.classList.remove('hidden');
+          b.style.opacity = '1';
+          b.style.transform = 'scale(1)';
+        }
+        if (q) q.classList.add('hidden');
+      }
+      document.getElementById('balloons-popped-count').textContent = '0';
+      document.getElementById('balloon-status-banner').innerHTML = `<span id="balloons-popped-count" class="text-amber-400 font-bold">0</span> of 5 balloons popped`;
+      const bNext = document.getElementById('balloons-next-btn');
+      if (bNext) {
+        bNext.disabled = true;
+        bNext.classList.add('opacity-40', 'cursor-not-allowed');
+        bNext.classList.remove('gold-glow-intense', 'scale-105', 'cursor-pointer');
+      }
+
+      renderMemory(0);
+
+      for (let i = 1; i <= 5; i++) {
+        const flame = document.getElementById(`flame-${i}`);
+        if (flame) {
+          flame.dataset.blown = "false";
+          flame.style.opacity = "1";
+          flame.style.transform = "scale(1)";
+        }
+      }
+      document.getElementById('candles-blown-count').textContent = '0';
+      document.getElementById('candle-status-text').innerHTML = `<span id="candles-blown-count" class="text-amber-400 font-bold">0</span> of 5 candles blown out`;
+
+      document.getElementById('gift-unopened').classList.remove('hidden');
+      document.getElementById('gift-opened').classList.add('hidden');
+
+      goToStep(1);
+    }
+
+    // Load any saved custom photos immediately
+    loadSavedPhotos();
+  </script>
+</body>
+</html>

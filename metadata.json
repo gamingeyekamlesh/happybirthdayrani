@@ -1,0 +1,6 @@
+{
+  "name": "Birthday Gala - Magical Cutiepie Celebration",
+  "description": "A luxury golden starry birthday celebration with interactive milestone reels, memory gallery, balloon pops, cake candles, love letter, and grand gift reveal.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
